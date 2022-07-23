@@ -33,11 +33,11 @@
         <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/filters/nfc.c"/>
         <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/filters/splitter.c"/>
         <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/mixer/mixer_c.c" />
-        <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/mixer/mixer_sse.c" unless="rpi || android" />
-        <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/mixer/mixer_sse2.c" unless="rpi || android" />
-        <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/mixer/mixer_sse3.c" unless="rpi || android" />
+        <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/mixer/mixer_sse.c" unless="rpi || android || HXCPP_ARM64" />
+        <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/mixer/mixer_sse2.c" unless="rpi || android || HXCPP_ARM64" />
+        <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/mixer/mixer_sse3.c" unless="rpi || android || HXCPP_ARM64" />
         <!-- <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/mixer/mixer_sse41.c" unless="rpi || android" /> -->
-        <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/mixer/mixer_neon.c" if="rpi" />
+        <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/mixer/mixer_neon.c" if="rpi || HXCPP_ARM64" />
         <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/ALc.c"/>
         <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/alconfig.c"/>
         <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/ALu.c"/>
@@ -106,11 +106,11 @@
 
             <file name="${NATIVE_TOOLKIT_PATH}/openal/Alc/backends/coreaudio.c" />
 
-            <compilerflag value="-mmmx" />
-            <compilerflag value="-msse" />
-            <compilerflag value="-msse2" />
-            <compilerflag value="-msse3" />
-            <compilerflag value="-mssse3" />
+            <compilerflag value="-mmmx" unless="HXCPP_ARM64" />
+            <compilerflag value="-msse" unless="HXCPP_ARM64" />
+            <compilerflag value="-msse2" unless="HXCPP_ARM64" />
+            <compilerflag value="-msse3" unless="HXCPP_ARM64" />
+            <compilerflag value="-mssse3" unless="HXCPP_ARM64" />
 
         </section>
 
